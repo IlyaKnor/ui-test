@@ -3,6 +3,7 @@ package com.example.uitest;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 
@@ -24,8 +25,9 @@ public class LoginPageTest {
     public void setup() {
 
         System.setProperty("webdriver.chrome.driver", chromeDriver);
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get(applicationPath);
 
